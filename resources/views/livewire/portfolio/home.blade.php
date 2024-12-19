@@ -7,7 +7,7 @@ state([
     'highlights' => ['Expertise in building scalable web applications', 'Cloud-native development with Azure and AWS', 'Strong focus on performance and user experience', 'Continuous learning and technology innovation'],
     'certifications' => [
         'Microsoft Azure Fundamentals (AZ-900)',
-        'Laravel Certified Developer',
+
         // Add more certifications
     ],
     'socialLinks' => [
