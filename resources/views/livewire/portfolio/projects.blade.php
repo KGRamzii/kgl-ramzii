@@ -70,6 +70,7 @@ state([
             'link' => '#',
             'repository' => null,
             'preview' => '',
+            'model' => '/3D/mic.glb',
             'category' => '3D Design',
             'screenshots' => ['/images/screenshots/3d-model-1.png', '/images/screenshots/3d-model-2.png'],
         ],
@@ -198,28 +199,29 @@ mount(function () {
                 <div class="p-6 space-y-4">
                     <div class="grid gap-4 md:grid-cols-2">
                         <div>
-                            @if (!empty($modalProject['screenshots']))
-                                <div class="relative h-64 overflow-hidden rounded-lg group cursor-zoom-in"
-                                    @click="lightboxOpen = true">
-                                    <img x-show="images.length > 0" :src="images[currentImageIndex]"
-                                        :alt="'{{ $modalProject['name'] }} Screenshot ' + (currentImageIndex + 1)"
-                                        class="object-contain w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105 dark:bg-white">
-                                </div>
-
-                                {{-- Thumbnail Gallery --}}
-                                <template x-if="images.length > 1">
-                                    <div class="flex pb-2 mt-4 space-x-2 overflow-x-auto">
-                                        <template x-for="(image, index) in images" :key="index">
-                                            <img :src="image" @click="currentImageIndex = index"
-                                                :class="{
-                                                    'border-2 border-blue-500': currentImageIndex === index,
-                                                    'opacity-60': currentImageIndex !== index
-                                                }"
-                                                class="object-cover w-16 h-16 transition-all duration-300 rounded-lg cursor-pointer hover:opacity-100 dark:bg-white">
-                                        </template>
-                                    </div>
+                            @if ($modalProject['category'] === '3D Design' && $modalProject['model'])
+                        <!-- 3D Viewer -->
+                        <model-viewer src="{{ $modalProject['model'] }}" alt="{{ $modalProject['name'] }} 3D Model"
+                            ar auto-rotate camera-controls class="w-full h-64">
+                        </model-viewer>
+                    @elseif (!empty($modalProject['screenshots']))
+                        <!-- Image Viewer -->
+                        <div class="relative h-64 overflow-hidden rounded-lg group cursor-zoom-in" @click="lightboxOpen = true">
+                            <img x-show="images.length > 0" :src="images[currentImageIndex]"
+                                :alt="'{{ $modalProject['name'] }} Screenshot ' + (currentImageIndex + 1)"
+                                class="object-contain w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105 dark:bg-white">
+                        </div>
+                        <!-- Thumbnail Gallery -->
+                        <template x-if="images.length > 1">
+                            <div class="flex pb-2 mt-4 space-x-2 overflow-x-auto">
+                                <template x-for="(image, index) in images" :key="index">
+                                    <img :src="image" @click="currentImageIndex = index"
+                                        :class="{ 'border-2 border-blue-500': currentImageIndex === index, 'opacity-60': currentImageIndex !== index }"
+                                        class="object-cover w-16 h-16 transition-all duration-300 rounded-lg cursor-pointer hover:opacity-100 dark:bg-white">
                                 </template>
-                            @endif
+                            </div>
+                        </template>
+                    @endif
                         </div>
                         <div>
                             <p class="mb-4 text-gray-600 dark:text-gray-300">
