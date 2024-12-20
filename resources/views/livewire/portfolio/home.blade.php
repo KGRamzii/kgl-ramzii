@@ -4,7 +4,15 @@ use function Livewire\Volt\{state, computed};
 state([
     'name' => 'Kagiso Ramogayana',
     'role' => 'Full Stack Developer',
-    'highlights' => ['Expertise in building scalable web applications', 'Cloud-native development with Azure and AWS', 'Strong focus on performance and user experience', 'Continuous learning and technology innovation'],
+    'highlights' => [
+        'Expertise in building scalable web applications',
+        'Cloud-native development with Azure',
+        'Strong focus on performance and user experience',
+        'Continuous learning and technology innovation',
+        'Proficient in Adobe Creative Suite (Photoshop, Illustrator, After Effects)',
+        'Creating visually appealing graphics and layouts',
+        'Designing responsive and user-friendly interfaces',
+    ],
     'certifications' => [
         'Microsoft Azure Fundamentals (AZ-900)',
 
@@ -106,34 +114,43 @@ $closeCvModal = fn() => ($this->showCvModal = false);
     </div>
     {{-- CV Modal --}}
     @if ($showCvModal)
-        <div class="fixed inset-0 z-50 flex items-center justify-center overflow-auto bg-black bg-opacity-50">
-            <div class="relative w-11/12 max-w-4xl mx-auto bg-white rounded-lg shadow-xl dark:bg-gray-800">
-                <button wire:click="closeCvModal"
-                    class="absolute text-gray-600 dark:text-red-600 top-4 right-4 hover:text-gray-900 dark:hover:text-white z-60">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
+    <div class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black bg-opacity-50">
+        <div class="relative w-11/12 max-w-4xl mx-auto my-6 bg-white rounded-lg shadow-xl dark:bg-gray-800">
+            <!-- Close Button -->
+            <button
+                wire:click="closeCvModal"
+                class="absolute text-gray-600 dark:text-red-600 top-4 right-4 hover:text-gray-900 dark:hover:text-white z-60"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
 
-                <div class="p-4">
-                    <iframe src="{{ asset('CV/KagisoCV.pdf') }}" width="100%" height="600px"
-                        class="border-none"></iframe>
-                </div>
-
-                <div class="flex justify-center p-4">
-                    <a href="{{ asset('CV/KagisoCV.pdf') }}" download
-                        class="inline-flex items-center px-6 py-3 text-white transition bg-blue-500 rounded-lg hover:bg-blue-600 dark:bg-dark-accent dark:hover:bg-dark-accent-dark">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                        </svg>
-                        Download CV
-                    </a>
+            <!-- PDF Viewer -->
+            <div class="p-4">
+                <div class="w-full overflow-hidden rounded-lg">
+                    <iframe
+                        src="{{ asset('CV/KagisoCV.pdf') }}"
+                        class="w-full h-[calc(100vh-200px)] min-h-[300px] border-none"
+                        style="max-height: 600px;"
+                    ></iframe>
                 </div>
             </div>
+
+            <!-- Download Button -->
+            <div class="flex justify-center p-4">
+                <a
+                    href="{{ asset('CV/KagisoCV.pdf') }}"
+                    download
+                    class="inline-flex items-center px-6 py-3 text-white transition bg-blue-500 rounded-lg hover:bg-blue-600 dark:bg-dark-accent dark:hover:bg-dark-accent-dark"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Download CV
+                </a>
+            </div>
         </div>
-    @endif
+    </div>
+@endif
 </div>

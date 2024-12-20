@@ -149,7 +149,7 @@ mount(function () {
                         <h3 class="mb-2 text-xl font-bold text-white dark:text-white">
                             {{ $project['name'] }}
                         </h3>
-                        <p class="mb-4 text-light-text-muted dark:text-gray-300 line-clamp-2">
+                        <p class="mb-4 text-light-text-muted dark:text-dark-text-muted line-clamp-2">
                             {{ $project['description'] }}
                         </p>
                         <div class="flex flex-wrap gap-2">
