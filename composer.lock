@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a4c5f42055f7ea75a41561c460c364f",
+    "content-hash": "97db670d2046539f904a20857163f46b",
     "packages": [
         {
             "name": "brick/math",
@@ -2300,10 +2300,6 @@
             ],
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev",
-                    "dev-2.x": "2.x-dev"
-                },
                 "laravel": {
                     "providers": [
                         "Carbon\\Laravel\\ServiceProvider"
@@ -2313,6 +2309,10 @@
                     "includes": [
                         "extension.neon"
                     ]
+                },
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev",
+                    "dev-master": "3.x-dev"
                 }
             },
             "autoload": {
@@ -6280,6 +6280,74 @@
             "time": "2024-09-25T12:00:00+00:00"
         },
         {
+            "name": "fly-apps/dockerfile-laravel",
+            "version": "1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fly-apps/dockerfile-laravel.git",
+                "reference": "762b43f8641787fdcd82a0b7f984e204d9f367ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fly-apps/dockerfile-laravel/zipball/762b43f8641787fdcd82a0b7f984e204d9f367ac",
+                "reference": "762b43f8641787fdcd82a0b7f984e204d9f367ac",
+                "shasum": ""
+            },
+            "require-dev": {
+                "illuminate/view": "^10.0",
+                "laravel-zero/framework": "^10.2",
+                "laravel/pint": "^1.13",
+                "mockery/mockery": "^1.6",
+                "nunomaduro/termwind": "^1.15.1",
+                "pestphp/pest": "^2.22",
+                "phpspec/php-diff": "^1.1"
+            },
+            "bin": [
+                "builds/dockerfile-laravel"
+            ],
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "App\\": "app/",
+                    "Database\\Seeders\\": "database/seeders/",
+                    "Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Fidao",
+                    "email": "fideloper@gmail.com"
+                },
+                {
+                    "name": "Kathryn Anne Tan",
+                    "email": "kathryn@fly.io"
+                },
+                {
+                    "name": "Sam Ruby",
+                    "email": "rubys@fly.io"
+                }
+            ],
+            "description": "Dockerfile generator and Fly.io helper.",
+            "homepage": "https://fly.io/docs/laravel",
+            "keywords": [
+                "Fly.io",
+                "cli",
+                "docker",
+                "dockerfile",
+                "generate",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/fly-apps/dockerfile-laravel/issues",
+                "source": "https://github.com/fly-apps/dockerfile-laravel/tree/1.0.7"
+            },
+            "time": "2024-12-09T15:59:57+00:00"
+        },
+        {
             "name": "hamcrest/hamcrest-php",
             "version": "v2.0.1",
             "source": {
@@ -9218,12 +9286,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
