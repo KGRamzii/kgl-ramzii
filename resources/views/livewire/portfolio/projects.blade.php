@@ -109,7 +109,7 @@ mount(function () {
     </div>
 
     <!-- Projects Grid -->
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div  class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         @foreach ($projects as $project)
             @if ($selectedCategory === 'All' || $project['category'] === $selectedCategory)
                 <div x-on:click.prevent="$wire.set('modalProject', {{ json_encode($project) }})"

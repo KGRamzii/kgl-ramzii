@@ -5,7 +5,7 @@ state([
     'bio' => 'I am a dedicated Full Stack Developer with a passion for creating innovative and efficient web solutions. With extensive experience in modern web technologies, I transform complex problems into elegant, user-friendly applications.',
     'personalDetails' => [
         'Name' => 'Kagiso Ramogayana',
-        'Email' => 'kagiso@example.com',
+        'Email' => 'kagiso1382@gmail.com',
         'Location' => 'South Africa',
     ],
     'keyStrengths' => [
