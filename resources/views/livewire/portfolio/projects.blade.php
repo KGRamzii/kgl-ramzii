@@ -6,16 +6,30 @@ state([
         [
             'name' => 'FPS game Ranking',
             'description' => 'An application aimed to document, schedule and report custom challenges amongst friends in a popular fps game named Valorant.',
-            'technologies' => ['Laravel', 'Livewire', 'Webhook'],
+            'technologies' => ['Laravel', 'Livewire', 'Webhook','API', 'Tailwind CSS'],
             'difficulty' => 'Intermediate',
             'timeline' => '3 months',
             'completion_date' => '2024-11-01',
             'status' => 'Completed',
             'link' => 'https://pleasedontshoot.fly.dev',
             'repository' => 'https://github.com/KGRamzii/pleasedontshoot',
-            'preview' => '/storage/images/pds/1.png',
+            'preview' => '/images/pds/pds.png',
             'category' => 'Web Development',
-            'screenshots' => ['/storage/images/pds/1.png'],
+            'screenshots' => ['/storage/images/pds/pds.png'],
+        ],
+        [
+            'name' => 'AmoShots',
+            'description' => 'A landing page for a photography business, showcasing portfolio and services.',
+            'technologies' => ['Laravel', 'Livewire', 'Tailwind CSS'],
+            'difficulty' => 'Beginner',
+            'timeline' => '4 weeks',
+            'completion_date' => '2025-06-12',
+            'status' => 'Completed',
+            'link' => 'https://amoshots.com',
+            'repository' => null,
+            'preview' => '/images/amoshots/web.png',
+            'category' => 'Web Development',
+            'screenshots' => ['/storage/images/amoshots/web.png', '/storage/images/amoshots/mobile.png'],
         ],
         [
             'name' => 'Bathusi Merakeng Logo Design',
@@ -27,7 +41,7 @@ state([
             'status' => 'Completed',
             'link' => '#',
             'repository' => null,
-            'preview' => '/storage/images/Bathusi/1.png',
+            'preview' => 'images/Bathusi/1.png',
             'category' => 'Graphic Design',
             'screenshots' => ['/storage/images/Bathusi/1.png'],
         ],
@@ -41,9 +55,9 @@ state([
             'status' => 'Completed',
             'link' => '#',
             'repository' => null,
-            'preview' => '/storage/images/bv/4.png',
+            'preview' => 'images/bv/BV.png',
             'category' => 'Graphic Design',
-            'screenshots' => ['/storage/images/bv/1.png', '/storage/images/bv/2.png', '/storage/images/bv/3.png', '/storage/images/bv/4.png', '/storage/images/bv/5.png', '/storage/images/bv/6.png', '/storage/images/bv/7.png', '/storage/images/bv/8.png'],
+            'screenshots' => ['/storage/images/bv/BV.png', '/storage/images/bv/bv-t2.png', '/storage/images/bv/01.png', '/storage/images/bv/02.png', '/storage/images/bv/05.png', '/storage/images/bv/Artboard 206.png', '/storage/images/bv/dress.png', '/storage/images/bv/stamp.png'],
         ],
         [
             'name' => 'PNP Logo Design',
@@ -55,9 +69,9 @@ state([
             'status' => 'Completed',
             'link' => '#',
             'repository' => null,
-            'preview' => '/storage/images/pnp/1.jpg',
+            'preview' => 'images/pnp/PMP2.jpg',
             'category' => 'Graphic Design',
-            'screenshots' => ['/storage/images/pnp/1.jpg', '/storage/images/pnp/2.jpg', '/storage/images/pnp/3.jpg', '/storage/images/pnp/4.jpg'],
+            'screenshots' => ['/storage/images/pnp/PMP2.jpg', '/storage/images/pnp/PMP3.jpg', '/storage/images/pnp/PMP4.jpg', '/storage/images/pnp/PMP5.jpg'],
         ],
         [
             'name' => '3D Character Modeling',
@@ -65,12 +79,12 @@ state([
             'technologies' => ['Blender', 'ZBrush'],
             'difficulty' => 'Advanced',
             'timeline' => '4 months',
-            'completion_date' => '2023-12-01',
+            'completion_date' => '2025-05-25',
             'status' => 'In Progress',
             'link' => '#',
             'repository' => null,
             'preview' => '',
-            'model' => '/storage/3D/mic.glb',
+            'model' => '3D/mic.glb',
             'category' => '3D Design',
             'screenshots' => ['/storage/images/screenshots/3d-model-1.png', '/storage/images/screenshots/3d-model-2.png'],
         ],
@@ -118,7 +132,7 @@ mount(function () {
 
                     <div class="relative h-48 overflow-hidden rounded-lg shadow-md">
                         @if ($project['preview'])
-    <img src="{{ $project['preview'] }}" alt="{{ $project['name'] }} Preview" loading="lazy"
+    <img src="{{ Storage::url($project['preview']) }}" alt="{{ $project['name'] }} Preview" loading="lazy"
         class="absolute inset-0 object-cover w-full h-full transition-all duration-500
         ease-in-out transform
         opacity-80 group-hover:opacity-100
@@ -169,20 +183,24 @@ mount(function () {
     <!-- Modal -->
     @if ($modalProject)
         <div x-data="{
-            open: true,
-            currentImageIndex: 0,
-            images: {{ json_encode($modalProject['screenshots'] ?? []) }},
-            lightboxOpen: false,
-            nextImage() {
-                this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
-            },
-            prevImage() {
-                this.currentImageIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length;
-            },
-            closeLightbox() {
-                this.lightboxOpen = false;
-            }
-        }" x-show="open" x-transition:enter="transition ease-out duration-300"
+    open: true,
+    currentImageIndex: 0,
+    images: {{ json_encode($modalProject['screenshots'] ?? []) }},
+    lightboxOpen: false,
+    nextImage() {
+        this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
+    },
+    prevImage() {
+        this.currentImageIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length;
+    },
+    closeLightbox() {
+        this.lightboxOpen = false;
+    }
+}"
+x-init="$watch('open', value => {
+    document.body.style.overflow = value ? 'hidden' : 'auto';
+
+        })" x-show="open" x-transition:enter="transition ease-out duration-300"
             x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
             x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 scale-100"
             x-transition:leave-end="opacity-0 scale-90"

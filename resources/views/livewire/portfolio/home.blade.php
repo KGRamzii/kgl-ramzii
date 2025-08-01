@@ -15,6 +15,7 @@ state([
     ],
     'certifications' => [
         'Microsoft Azure Fundamentals (AZ-900)',
+        'Kubernetes and Cloud Native Associate (KCNA)',
 
         // Add more certifications
     ],
@@ -22,7 +23,7 @@ state([
         'github' => 'https://github.com/KGRamzii',
         'linkedin' => 'https://linkedin.com/in/kagiso-ramogayana-15a6921a0',
         'email' => 'mailto:kagiso1382@gmail.com?subject=Hello&body=I%20wanted%20to%20reach%20out...',
-        'whatsapp' => 'https://wa.me/27817342820?text=Hello%20there!',
+        // 'whatsapp' => 'https://wa.me/27817342820?text=Hello%20there!',
 
     ],
     'showCvModal' => false, // New state for CV modal
@@ -139,7 +140,7 @@ $closeCvModal = fn() => ($this->showCvModal = false);
             <div class="p-4">
                 <div class="w-full overflow-hidden rounded-lg">
                     <iframe
-                        src="{{ asset('CV/KagisoCV.pdf') }}"
+                        src="{{ asset('CV/KagisoCV1.pdf') }}"
                         class="w-full h-[calc(100vh-200px)] min-h-[300px] border-none"
                         style="max-height: 600px;"
                     ></iframe>
@@ -149,7 +150,7 @@ $closeCvModal = fn() => ($this->showCvModal = false);
             <!-- Download Button -->
             <div class="flex justify-center p-4">
                 <a
-                    href="{{ asset('CV/KagisoCV.pdf') }}"
+                    href="{{ asset('CV/KagisoCV1.pdf') }}"
                     download
                     class="inline-flex items-center px-6 py-3 text-white transition bg-blue-500 rounded-lg hover:bg-blue-600 dark:bg-dark-accent dark:hover:bg-dark-accent-dark"
                 >

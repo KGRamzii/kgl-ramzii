@@ -7,19 +7,21 @@ state([
         ['name' => 'Vue.js', 'level' => 40, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg'],
         ['name' => 'PHP', 'level' => 70, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg'],
         ['name' => 'JavaScript', 'level' => 40, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'],
-        ['name' => 'React', 'level' => 10, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg'],
+
         ['name' => 'Tailwind CSS', 'level' => 60, 'icon' => 'https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg'],
     ],
     'cloudSkills' => [
-        ['name' => 'Microsoft Azure', 'level' => 85, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg'],
+        ['name' => 'Microsoft Azure', 'level' => 60, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg'],
         ['name' => 'Cloud Architecture', 'level' => 75, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg'],
         ['name' => 'Serverless Computing', 'level' => 40, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg'],
-        ['name' => 'Kubernetes', 'level' => 40, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg'],
-        ['name' => 'Docker', 'level' => 40, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg'],
+        ['name' => 'Kubernetes', 'level' => 75, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg'],
+        ['name' => 'Docker', 'level' => 75, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg'],
+        ['name' => 'Github', 'level' => 80, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg'],
     ],
     'certifications' => [
         'Microsoft Certified: Azure Fundamentals',
-        
+        'Microsoft Certified: Kebernetes and Cloud Native Associate',
+
     ],
 ]);
 ?>

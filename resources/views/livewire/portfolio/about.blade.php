@@ -15,22 +15,30 @@ state([
         'Attention to Detail',
     ],
     'certifications' => [
-        ['name' => 'Microsoft Certified: Azure Fundamentals', 'icon' => 'https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-fundamentals-badge.svg'],
+        ['name' => 'Kubernetes and Cloud Native Associate (KCNA)', 'icon' => 'https://www.cncf.io/wp-content/uploads/2021/09/kcna_color.svg'],
+        ['name' => 'Microsoft Certified: Azure Fundamentals (AZ900)', 'icon' => 'https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-fundamentals-badge.svg'],
+
+
     ],
 ]);
 ?>
 
 <div class="container py-12 mx-auto">
-    <div class="grid items-center gap-8 md:grid-cols-2">
-        <!-- Bio Section -->
-        <div>
-            <h2 class="mb-6 text-3xl font-bold text-light-text-dark dark:text-white">
-                About Me
-            </h2>
-            <p class="leading-relaxed text-light-text-muted dark:text-dark-text-muted mb-6">
-                {{ $bio }}
-            </p>
-            <div class="mb-4">
+    <div class="grid gap-12 md:grid-cols-2">
+        <!-- Left Column: Bio & Details -->
+        <div class="space-y-8">
+            <!-- About Me -->
+            <div>
+                <h2 class="mb-4 text-3xl font-bold text-light-text-dark dark:text-white">
+                    About Me
+                </h2>
+                <p class="leading-relaxed text-light-text-muted dark:text-dark-text-muted">
+                    {{ $bio }}
+                </p>
+            </div>
+
+            <!-- Personal Details -->
+            <div>
                 <h3 class="text-xl font-semibold text-light-text-dark dark:text-white">
                     Personal Details
                 </h3>
@@ -42,7 +50,9 @@ state([
                     @endforeach
                 </ul>
             </div>
-            <div class="mb-4">
+
+            <!-- Key Strengths -->
+            <div>
                 <h3 class="text-xl font-semibold text-light-text-dark dark:text-white">
                     Key Strengths
                 </h3>
@@ -55,28 +65,30 @@ state([
                     @endforeach
                 </ul>
             </div>
-            <div class="flex space-x-4">
 
+            <!-- Contact Button -->
+            <div>
                 <a href="#" wire:click.prevent="$parent.setTab('contact')"
-                class="px-6 py-3 transition border rounded-lg border-light-text-muted dark:border-dark-accent text-light-text-muted dark:text-white hover:bg-light-text-muted dark:hover:bg-dark-accent hover:text-white">
-                Contact Me
-            </a>
+                   class="inline-block px-6 py-3 transition border rounded-lg border-light-text-muted dark:border-dark-accent text-light-text-muted dark:text-white hover:bg-light-text-muted dark:hover:bg-dark-accent hover:text-white">
+                    Contact Me
+                </a>
             </div>
-
         </div>
 
-        <!-- Image Section -->
-        <div class="relative flex justify-center">
+        <!-- Right Column: Image & Certifications -->
+        <div class="flex flex-col items-center space-y-12">
+            <!-- Profile Image -->
             <div class="w-64 h-64 overflow-hidden rounded-full shadow-lg bg-gradient-to-br from-green-400 to-blue-500">
                 <img src="{{ asset('Picture/Kagiso.png') }}" alt="Kagiso Ramogayana"
-                    class="object-cover object-top w-full h-full transform transition duration-300 hover:scale-110" />
+                     class="object-cover object-top w-full h-full transition duration-300 transform hover:scale-110" />
             </div>
-        </div>
-        <div >
-                <h3 class="mb-6 text-2xl font-semibold text-light-text-dark dark:text-white">
+
+            <!-- Certifications -->
+            <div class="w-full">
+                <h3 class="mb-6 text-2xl font-semibold text-center text-light-text-dark dark:text-white md:text-left">
                     Certifications
                 </h3>
-                <ul class="list-none pl-0 text-light-text-muted dark:text-dark-text-muted space-y-4">
+                <ul class="space-y-4 text-light-text-muted dark:text-dark-text-muted">
                     @foreach ($certifications as $certification)
                         <li class="flex items-center space-x-4">
                             <img src="{{ $certification['icon'] }}" alt="{{ $certification['name'] }}" class="w-20 h-20">
@@ -85,5 +97,7 @@ state([
                     @endforeach
                 </ul>
             </div>
+        </div>
     </div>
 </div>
+
