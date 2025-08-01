@@ -86,7 +86,7 @@ state([
             'preview' => '',
             'model' => '3D/mic.glb',
             'category' => '3D Design',
-            'screenshots' => ['/storage/images/screenshots/3d-model-1.png', '/storage/images/screenshots/3d-model-2.png'],
+            'screenshots' => ['/storage/images/screenshots/3d-model-1.png', '/storage/images/screenshots/3d-model-3.png'],
         ],
     ],
     'selectedCategory' => 'All',
