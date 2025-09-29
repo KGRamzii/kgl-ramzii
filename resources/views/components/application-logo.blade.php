@@ -1,1 +1,1 @@
-<img src="{{ asset('path/to/your/newLogo2.svg') }}" {{ $attributes }} alt="Logo">
+<img src="{{ asset('Picture/newLogo.svg') }}" {{ $attributes }} alt="Logo">
