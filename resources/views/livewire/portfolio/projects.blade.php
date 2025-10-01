@@ -152,7 +152,7 @@ new class extends Component {
     <div class="container px-6 py-16 mx-auto animate-fade-in">
         <div class="flex flex-col items-center justify-between mb-16 animate-slide-up md:flex-row">
             <div class="mb-8 md:mb-0">
-                <h1 class="mb-4 text-5xl font-bold gradient-text-primary">My Projects</h1>
+                <h1 class="mb-4 text-5xl font-bold gradient-text-primary dark:gradient-text-primary">My Projects</h1>
                 <p class="text-xl text-light-text-muted dark:text-dark-text-muted opacity-90">
                     Explore my creative journey through various disciplines
                 </p>
@@ -270,11 +270,11 @@ new class extends Component {
     wire:key="project-modal-{{ $modalProject['id'] ?? 'none' }}"
     :title="$modalProject['name'] ?? 'Project Details'"
     :subtitle="($modalProject['category'] ?? '') . ' • ' . ($modalProject['status'] ?? '')"
-    class="min-w-[40rem]"
+    box-class="max-w-4xl"
 >
     @if (empty($modalProject))
         <div class="flex flex-col items-center justify-center p-12 space-y-4">
-            <x-mary-loading class="text-blue-500 loading-infinity" />
+            <x-mary-loading class="text-blue-500 loading-ball" />
             <p class="text-lg text-light-text-muted dark:text-dark-text-muted">Loading project details...</p>
         </div>
     @else
@@ -314,7 +314,7 @@ new class extends Component {
             "
         >
             <!-- Modal Content -->
-            <div class="max-w-md space-y-2">
+            <div class=" space-y-2">
                 <div class="grid gap-2 lg:grid-cols-2">
                     <!-- Media Section -->
                     <div class="animate-slide-in-left">
@@ -405,11 +405,17 @@ new class extends Component {
                             </div>
                         @endif
 
-                        <!-- Project Info Grid -->
-                        <div class="grid grid-cols-2 gap-2">
+                        
+
+                        
+                    </div>
+                    
+                </div>
+                <!-- Project Info Grid -->
+                        <div class="grid grid-cols-2 md-grid-col-4 gap-2">
                             @if(!empty($modalProject['difficulty']))
                                 <div class="p-4 text-center card-glass rounded-xl">
-                                    <div class="w-3 h-3 mx-auto mb-2 rounded-full
+                                    <div class="w-4 h-4 mx-auto mb-2 rounded-full
                                         {{ $modalProject['difficulty'] === 'Beginner' ? 'bg-green-500' :
                                            ($modalProject['difficulty'] === 'Intermediate' ? 'bg-yellow-500' : 'bg-red-500') }}">
                                     </div>
@@ -419,7 +425,7 @@ new class extends Component {
                             @endif
 
                             @if(!empty($modalProject['timeline']))
-                                <div class="p-4 text-center card-glass rounded-xl">
+                                <div class="p-3 text-center card-glass rounded-xl">
                                     <x-heroicon-o-clock class="w-6 h-6 mx-auto mb-2 text-blue-500" />
                                     <span class="block text-sm font-medium text-light-text-muted dark:text-dark-text-muted">Timeline</span>
                                     <span class="text-lg font-semibold text-light-text-dark dark:text-white">{{ $modalProject['timeline'] }}</span>
@@ -427,15 +433,15 @@ new class extends Component {
                             @endif
 
                             @if(!empty($modalProject['completion_date']))
-                                <div class="p-4 text-center card-glass rounded-xl">
+                                <div class="p-3 text-center card-glass rounded-xl">
                                     <x-heroicon-o-calendar class="w-6 h-6 mx-auto mb-2 text-green-500" />
                                     <span class="block text-sm font-medium text-light-text-muted dark:text-dark-text-muted">Completed</span>
-                                    <span class="text-lg font-semibold text-light-text-dark dark:text-white">{{ $modalProject['completion_date'] }}</span>
+                                    <span class="text- font-semibold text-light-text-dark dark:text-white">{{ $modalProject['completion_date'] }}</span>
                                 </div>
                             @endif
 
                             @if(!empty($modalProject['status']))
-                                <div class="p-4 text-center card-glass rounded-xl">
+                                <div class="p-3 text-center card-glass rounded-xl">
                                     @if ($modalProject['status'] === 'Completed')
                                         <x-heroicon-s-check-circle class="w-6 h-6 mx-auto mb-2 text-green-500" />
                                     @else
@@ -446,27 +452,6 @@ new class extends Component {
                                 </div>
                             @endif
                         </div>
-
-                        <!-- Action Buttons -->
-                        <div class="flex flex-wrap gap-4">
-                            @if (!empty($modalProject['link']) && $modalProject['link'] !== '#')
-                                <a href="{{ $modalProject['link'] }}" target="_blank" rel="noopener noreferrer"
-                                    class="inline-flex items-center px-6 py-3 font-medium text-white transition-all duration-500 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl btn-hover-lift focus:outline-none focus:ring-4 focus:ring-blue-500/50 shadow-glow-colored">
-                                    <x-heroicon-s-arrow-top-right-on-square class="w-5 h-5 mr-3" />
-                                    View Project
-                                </a>
-                            @endif
-
-                            @if (!empty($modalProject['repository']))
-                                <a href="{{ $modalProject['repository'] }}" target="_blank" rel="noopener noreferrer"
-                                    class="inline-flex items-center px-6 py-3 font-medium text-white transition-all duration-500 bg-gradient-to-r from-green-500 to-green-600 rounded-xl btn-hover-lift focus:outline-none focus:ring-4 focus:ring-green-500/50 shadow-glow-colored">
-                                    <x-bi-github class="w-5 h-5 mr-3" />
-                                    GitHub
-                                </a>
-                            @endif
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Lightbox Overlay (sibling to content, not nested) -->
@@ -532,7 +517,25 @@ new class extends Component {
     @endif
 
     <!-- Modal Footer Slot (outside Alpine scope) -->
-    <x-slot:actions>
+    <x-slot:actions >
+        <!-- Action Buttons -->
+        <div class="align-baseline flex flex-wrap gap-4">
+            @if (!empty($modalProject['link']) && $modalProject['link'] !== '#')
+                <a href="{{ $modalProject['link'] }}" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center px-2 py-2 font-medium text-white transition-all duration-500 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl btn-hover-lift focus:outline-none focus:ring-4 focus:ring-blue-500/50 shadow-glow-colored">
+                    <x-heroicon-s-arrow-top-right-on-square class="w-6 h-6 mr-2" />
+                    View Project
+                </a>
+            @endif
+
+            @if (!empty($modalProject['repository']))
+                <a href="{{ $modalProject['repository'] }}" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center px-2 py-2 font-medium text-white transition-all duration-500 bg-gradient-to-r from-green-500 to-green-600 rounded-xl btn-hover-lift focus:outline-none focus:ring-4 focus:ring-green-500/50 shadow-glow-colored">
+                    <x-bi-github class="w-6 h-6 mr-2" />
+                    GitHub
+                </a>
+            @endif
+        </div>
         <x-mary-button
             label="Close"
             @click="$wire.closeModal()"

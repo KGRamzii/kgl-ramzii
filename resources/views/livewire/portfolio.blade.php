@@ -88,8 +88,8 @@ new class extends Component {
     </nav>
 
     <!-- PAGE CONTENT -->
-    <div class="pt-24">
-        <div class="container px-6 py-8 mx-auto">
+    <div class="pt-10">
+        <div class="container px-6 py-4 mx-auto">
             <div class="animate-fade-in">
                 @switch($activeTab)
                     @case('home')

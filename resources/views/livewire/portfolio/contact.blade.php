@@ -389,7 +389,7 @@ $fillDemoData = function () {
                                 wire:target="submit"
                                 wire:loading.class="opacity-75 cursor-not-allowed"
                                 wire:loading.attr="disabled"
-                                :disabled="!$this->isFormValid || $isLoading"
+                                @disabled(!$this->isFormValid || $isLoading)
                             >
                                 <!-- Button Background Animation -->
                                 <div class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-r from-purple-600 to-blue-500 group-hover:opacity-100"></div>

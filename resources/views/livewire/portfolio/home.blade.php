@@ -25,7 +25,7 @@ state([
         'whatsapp' => 'https://wa.me/27817342820?text=Hello%20there!',
     ],
     'showCvModal' => false,
-    'cvPath' => 'CV/KagisoCV1.pdf',
+    'cvPath' => 'CV/CV.pdf',
 ]);
 
 // CV Modal methods

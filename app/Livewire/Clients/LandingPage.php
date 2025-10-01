@@ -3,12 +3,13 @@
 namespace App\Livewire\Clients;
 
 use Livewire\Component;
+use Livewire\Attributes\Layout;
 
-#[\Livewire\Attributes\Layout('layouts.guest')]
+#[Layout('layouts.guest')]
 class LandingPage extends Component
 {
     public $name = 'Kagiso Ramogayana';
-    public $role = 'Full Stack Developer';
+    public $role = 'Full Stack Developer & Graphic Designer';
     public $highlights = [
         'Expertise in building scalable web applications',
         'Cloud-native development with Azure',
@@ -33,9 +34,9 @@ class LandingPage extends Component
             'status' => 'Completed',
             'link' => 'https://pleasedontshoot.fly.dev',
             'repository' => 'https://github.com/KGRamzii/pleasedontshoot',
-            'preview' => '/images/pds/pds.png',
+            'preview' => '/images/pds/pds1.png',
             'category' => 'Web Development',
-            'screenshots' => ['/storage/images/pds/pds.png'],
+            'screenshots' => ['/storage/images/pds/pds1.png','/storage/images/pds/pds2.png','/storage/images/pds/pdsMobile.png'],
         ],
         [
             'name' => 'AmoShots',
@@ -52,6 +53,32 @@ class LandingPage extends Component
             'screenshots' => ['/storage/images/amoshots/web.png', '/storage/images/amoshots/mobile.png'],
         ]
     ];
+
+    
+
+     public $testimonials = [
+    [
+        'quote' => 'Kagiso delivered our website on time and it looks fantastic!',
+        'name'  => 'Lerato M.',
+        'role'  => 'Small Business Owner',
+        'photo' => 'images/avatars/client1.jpg',
+        'rating' => 5,
+    ],
+    [
+        'quote' => 'The new logo has completely transformed our brand identity.',
+        'name'  => 'Thabo K.',
+        'role'  => 'Startup Founder',
+        'photo' => 'images/avatars/client2.jpg',
+        'rating' => 4,
+    ],
+    [
+        'quote' => 'Our mobile app is clean, fast, and user-friendly. Highly recommend!',
+        'name'  => 'Amanda R.',
+        'role'  => 'Entrepreneur',
+        'photo' => 'images/avatars/client3.jpg',
+        'rating' => 5,
+    ],
+];
 
     public $selectedCategory = 'All';
     public $modalProject = null;

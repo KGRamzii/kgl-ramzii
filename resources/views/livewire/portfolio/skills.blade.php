@@ -34,7 +34,7 @@ state([
         [
             'name' => 'Kubernetes and Cloud Native Associate',
             'issuer' => 'Cloud Native Computing Foundation',
-            'date' => '2024',
+            'date' => '2025',
             'credential_id' => 'KCNA',
             'badge' => 'https://images.credly.com/size/340x340/images/f28f1d88-428a-47f6-95b5-7da1dd6c1000/KCNA_badge.png'
         ],
