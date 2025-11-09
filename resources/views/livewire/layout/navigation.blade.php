@@ -1,12 +1,26 @@
 <?php
 
 use App\Livewire\Actions\Logout;
+use Livewire\Volt\Component;
 
-$logout = function (Logout $logout) {
-    $logout();
-
-    $this->redirect('/', navigate: true);
-};
+new class extends Component
+{
+    public string $userName;
+    public string $userEmail;
+    
+    public function mount(): void
+    {
+        $user = auth()->user();
+        $this->userName = $user->name;
+        $this->userEmail = $user->email;
+    }
+    
+    public function logout(Logout $logout): void
+    {
+        $logout();
+        $this->redirect('/', navigate: true);
+    }
+}
 
 ?>
 
@@ -24,13 +38,13 @@ $logout = function (Logout $logout) {
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate.prefatch>
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('clients.index')" :active="request()->routeIs('clients.*')" wire:navigate>
+                    <x-nav-link :href="route('clients.index')" :active="request()->routeIs('clients.*')" wire:navigate.prefatch>
                         {{ __('Manage Clients') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('services.index')" :active="request()->routeIs('services.*')" wire:navigate>
+                    <x-nav-link :href="route('services.index')" :active="request()->routeIs('services.*')" wire:navigate.prefatch>
                         {{ __('Services') }}
                     </x-nav-link>
                 </div>
@@ -41,7 +55,7 @@ $logout = function (Logout $logout) {
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                            <div x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name" x-on:profile-updated.window="name = $event.detail.name"></div>
+                            <div>{{ $userName }}</div>
 
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -95,8 +109,8 @@ $logout = function (Logout $logout) {
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
             <div class="px-4">
-                <div class="font-medium text-base text-gray-800 dark:text-gray-200" x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name" x-on:profile-updated.window="name = $event.detail.name"></div>
-                <div class="font-medium text-sm text-gray-500">{{ auth()->user()->email }}</div>
+                <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ $userName }}</div>
+                <div class="font-medium text-sm text-gray-500">{{ $userEmail }}</div>
             </div>
 
             <div class="mt-3 space-y-1">

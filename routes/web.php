@@ -25,7 +25,7 @@ Route::prefix('clients')->name('clients.')->group(function () {
 });
 
 // Authenticated Routes
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware('auth')->group(function () {
     // Dashboard
     Route::get('/dashboard', function () {
         return view('dashboard');
