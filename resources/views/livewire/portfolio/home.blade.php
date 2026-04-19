@@ -114,7 +114,7 @@ $cvExists = computed(function () {
                         </flux:modal.trigger>
                     @endif
 
-                    <button wire:click.prevent="$parent.setTab('contact')"
+                    <button @click="$dispatch('switch-tab', 'contact')"
                         class="inline-flex items-center px-6 py-3 font-semibold text-gray-900 transition-all duration-300 bg-white border-2 border-gray-300 shadow-md group dark:bg-gray-800 dark:text-white dark:border-gray-600 rounded-xl hover:shadow-lg hover:scale-105 hover:border-blue-500 dark:hover:border-blue-400 focus:outline-none focus:ring-4 focus:ring-gray-500/50">
                         <svg class="w-5 h-5 mr-2 text-gray-600 transition-colors duration-200 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />

@@ -1,61 +1,55 @@
 <?php
-
 use Livewire\Volt\Component;
 
 new class extends Component {
-    public $name = 'Kagiso Ramogayana';
-    public $role = 'Full Stack Developer';
-    public $activeTab;
-    public $isMobileMenuOpen = false;
+    public string $initialTab = 'home';
 
-    public $tabs = ['home', 'about', 'skills', 'projects', 'contact'];
-
-    public function mount()
+    public function mount(): void
     {
-        $this->activeTab = request()->query('tab', 'home');
-    }
-
-    public function setTab($tab)
-    {
-        $this->activeTab = $tab;
-        $this->isMobileMenuOpen = false;
-
-        $this->dispatch('replace-url', [
-            'url' => request()->fullUrlWithQuery(['tab' => $this->activeTab]),
-        ]);
-    }
-
-    public function toggleMobileMenu()
-    {
-        $this->isMobileMenuOpen = !$this->isMobileMenuOpen;
-        $this->dispatch('body-scroll', $this->isMobileMenuOpen);
+        $this->initialTab = request()->query('tab', 'home');
     }
 };
 ?>
 
-<div class="flex flex-col min-h-screen transition-colors duration-300 bg-zinc-50 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-50">
+<div
+    x-data="{
+        tab: @js($initialTab),
+        mobileMenuOpen: false,
+        setTab(t) {
+            this.tab = t;
+            this.mobileMenuOpen = false;
+            window.history.pushState({}, '', window.location.pathname + '?tab=' + t);
+        }
+    }"
+    x-init="
+        $el.addEventListener('switch-tab', e => setTab(e.detail));
+        window.addEventListener('popstate', () => {
+            const p = new URLSearchParams(window.location.search);
+            tab = p.get('tab') || 'home';
+        });
+    "
+    class="flex flex-col min-h-screen transition-colors duration-300 bg-zinc-50 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-50"
+>
 
     <!-- NAVIGATION -->
     <nav class="fixed top-0 left-0 right-0 z-50 shadow-md bg-white/80 dark:bg-zinc-800/80 backdrop-blur-sm">
         <div class="container flex items-center justify-between px-6 py-4 mx-auto">
 
             <!-- Brand -->
-            <button wire:click="setTab('home')" class="flex-shrink-0 text-lg font-bold tracking-tight text-zinc-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+            <button @click="setTab('home')" class="flex-shrink-0 text-lg font-bold tracking-tight text-zinc-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                 Kagiso R.
             </button>
 
             <!-- Desktop Tabs -->
             <div class="hidden space-x-6 md:flex">
-                @foreach ($tabs as $tab)
-                    <button wire:click="setTab('{{ $tab }}')"
-                        class="relative px-2 py-1 text-base font-medium transition-colors
-                            {{ $activeTab === $tab
-                                ? 'text-secondary'
-                                : 'text-zinc-600 dark:text-zinc-300 hover:text-secondary' }}">
-                        {{ ucfirst($tab) }}
+                @foreach (['home', 'about', 'skills', 'projects', 'contact'] as $navTab)
+                    <button @click="setTab('{{ $navTab }}')"
+                        :class="tab === '{{ $navTab }}' ? 'text-secondary' : 'text-zinc-600 dark:text-zinc-300 hover:text-secondary'"
+                        class="relative px-2 py-1 text-base font-medium transition-colors">
+                        {{ ucfirst($navTab) }}
                         <span
-                            class="absolute left-0 -bottom-0.5 h-0.5 w-full scale-x-0 transition-transform duration-300 ease-out
-                                   {{ $activeTab === $tab ? 'scale-x-100 bg-secondary' : 'hover:scale-x-100 bg-orange-400' }}">
+                            :class="tab === '{{ $navTab }}' ? 'scale-x-100 bg-secondary' : 'hover:scale-x-100 bg-orange-400'"
+                            class="absolute left-0 -bottom-0.5 h-0.5 w-full scale-x-0 transition-transform duration-300 ease-out">
                         </span>
                     </button>
                 @endforeach
@@ -86,60 +80,57 @@ new class extends Component {
 
                 <!-- Mobile Menu: Hamburger + Active Tab Title -->
                 <div class="flex items-center space-x-2 md:hidden">
-                    <span class="text-sm font-semibold text-zinc-700 dark:text-zinc-200">{{ ucfirst($activeTab) }}</span>
-                    <button wire:click="toggleMobileMenu"
+                    <span x-text="tab.charAt(0).toUpperCase() + tab.slice(1)" class="text-sm font-semibold text-zinc-700 dark:text-zinc-200"></span>
+                    <button @click="mobileMenuOpen = !mobileMenuOpen"
                         class="p-2 transition rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-700">
-                        @if ($isMobileMenuOpen)
+                        <span x-show="mobileMenuOpen" style="display:none">
                             <flux:icon.x-mark class="w-7 h-7 text-zinc-700 dark:text-zinc-200" />
-                        @else
+                        </span>
+                        <span x-show="!mobileMenuOpen">
                             <flux:icon.bars-3 class="w-7 h-7 text-zinc-700 dark:text-zinc-200" />
-                        @endif
+                        </span>
                     </button>
                 </div>
             </div>
         </div>
 
         <!-- Mobile Menu -->
-        @if ($isMobileMenuOpen)
-            <div class="px-6 py-4 space-y-2 shadow-md md:hidden bg-white/95 dark:bg-zinc-800/95">
-                @foreach ($tabs as $tab)
-                    <button wire:click="setTab('{{ $tab }}')"
-                        class="block w-full text-left px-3 py-2 rounded-lg transition
-                            {{ $activeTab === $tab
-                                ? 'bg-secondary text-white'
-                                : 'hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300' }}">
-                        {{ ucfirst($tab) }}
-                    </button>
-                @endforeach
-            </div>
-        @endif
+        <div x-show="mobileMenuOpen" style="display:none" class="px-6 py-4 space-y-2 shadow-md md:hidden bg-white/95 dark:bg-zinc-800/95">
+            @foreach (['home', 'about', 'skills', 'projects', 'contact'] as $navTab)
+                <button @click="setTab('{{ $navTab }}')"
+                    :class="tab === '{{ $navTab }}' ? 'bg-secondary text-white' : 'hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300'"
+                    class="block w-full text-left px-3 py-2 rounded-lg transition">
+                    {{ ucfirst($navTab) }}
+                </button>
+            @endforeach
+        </div>
     </nav>
 
-    <!-- PAGE CONTENT -->
+    <!-- PAGE CONTENT — all 5 tabs pre-rendered; Alpine.js toggles visibility -->
     <div class="pt-10">
         <div class="container px-6 py-4 mx-auto">
             <div class="animate-fade-in">
-                @switch($activeTab)
-                    @case('home')
-                        <livewire:portfolio.home />
-                        @break
 
-                    @case('about')
-                        <livewire:portfolio.about />
-                        @break
+                <div x-show="tab === 'home'" @style(['display:none' => $initialTab !== 'home'])>
+                    <livewire:portfolio.home />
+                </div>
 
-                    @case('skills')
-                        <livewire:portfolio.skills />
-                        @break
+                <div x-show="tab === 'about'" @style(['display:none' => $initialTab !== 'about'])>
+                    <livewire:portfolio.about />
+                </div>
 
-                    @case('projects')
-                        <livewire:portfolio.projects />
-                        @break
+                <div x-show="tab === 'skills'" @style(['display:none' => $initialTab !== 'skills'])>
+                    <livewire:portfolio.skills />
+                </div>
 
-                    @case('contact')
-                        <livewire:portfolio.contact />
-                        @break
-                @endswitch
+                <div x-show="tab === 'projects'" @style(['display:none' => $initialTab !== 'projects'])>
+                    <livewire:portfolio.projects />
+                </div>
+
+                <div x-show="tab === 'contact'" @style(['display:none' => $initialTab !== 'contact'])>
+                    <livewire:portfolio.contact />
+                </div>
+
             </div>
         </div>
     </div>
@@ -169,9 +160,3 @@ new class extends Component {
         </div>
     </footer>
 </div>
-
-<script>
-window.addEventListener('replace-url', event => {
-    window.history.pushState({}, '', event.detail.url);
-});
-</script>

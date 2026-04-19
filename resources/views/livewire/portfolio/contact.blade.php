@@ -356,10 +356,11 @@ $fillDemoData = function () {
                                 <label for="message" class="block mb-2 text-sm font-medium text-light-text-dark dark:text-white">
                                     Message <span class="text-red-500">*</span>
                                 </label>
-                                <div class="relative">
+                                <div class="relative" x-data="{ msgLen: 0 }">
                                     <textarea
                                         id="message"
-                                        wire:model.live="message"
+                                        wire:model.blur="message"
+                                        x-on:input="msgLen = $el.value.length"
                                         rows="5"
                                         placeholder="Tell me about your project or just say hello..."
                                         class="w-full p-4 bg-light-secondary dark:bg-dark-secondary text-light-text-dark dark:text-white rounded-lg border border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none @error('message') border-red-500 focus:ring-red-500 @enderror"
@@ -367,10 +368,10 @@ $fillDemoData = function () {
                                     ></textarea>
                                     <div
                                         id="message-counter"
-                                        class="absolute bottom-3 right-3 text-sm {{ $this->messageLength > 900 ? 'text-red-500' : ($this->messageLength > 700 ? 'text-yellow-500' : 'text-light-text-muted dark:text-dark-text-muted') }}"
-                                    >
-                                        {{ $this->messageLength }}/1000
-                                    </div>
+                                        :class="msgLen > 900 ? 'text-red-500' : msgLen > 700 ? 'text-yellow-500' : 'text-gray-400 dark:text-gray-500'"
+                                        x-text="msgLen + '/1000'"
+                                        class="absolute bottom-3 right-3 text-sm"
+                                    ></div>
                                 </div>
                                 @error('message')
                                     <p id="message-error" class="flex items-center mt-1 text-sm text-red-500">
