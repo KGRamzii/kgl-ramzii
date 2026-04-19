@@ -15,8 +15,8 @@ state([
         'Attention to Detail',
     ],
     'certifications' => [
-        ['name' => 'Kubernetes and Cloud Native Associate (KCNA)', 'icon' => 'https://www.cncf.io/wp-content/uploads/2021/09/kcna_color.svg'],
-        ['name' => 'Microsoft Certified: Azure Fundamentals (AZ900)', 'icon' => 'https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-fundamentals-badge.svg'],
+        ['name' => 'Kubernetes and Cloud Native Associate (KCNA)', 'icon' => 'images/badges/kcna.svg'],
+        ['name' => 'Microsoft Certified: Azure Fundamentals (AZ900)', 'icon' => 'images/badges/az900.svg'],
     ],
     'socialLinks' => [
         'github' => 'https://github.com/KGRamzii',
@@ -144,7 +144,7 @@ state([
                     <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         @foreach ($certifications as $certification)
                             <li class="flex items-center gap-3 p-3 text-sm sm:text-base transition transform bg-gray-100 rounded-lg shadow-sm dark:bg-gray-800 hover:shadow-md hover:-translate-y-0.5 animate-slide-up">
-                                <img src="{{ $certification['icon'] }}" alt="{{ $certification['name'] }}" class="w-12 h-12 sm:w-14 sm:h-14">
+                                <img src="{{ asset($certification['icon']) }}" alt="{{ $certification['name'] }}" class="w-12 h-12 sm:w-14 sm:h-14" loading="lazy">
                                 <span class="font-medium text-gray-800 dark:text-gray-200">{{ $certification['name'] }}</span>
                             </li>
                         @endforeach

@@ -341,7 +341,7 @@ $fillDemoData = function () {
                                     <input
                                         type="text"
                                         id="subject"
-                                        wire:model.live="subject"
+                                        wire:model.live.blur="subject"
                                         placeholder="What's this about? (optional)"
                                         class="w-full pl-10 pr-4 py-3 bg-light-secondary dark:bg-dark-secondary text-light-text-dark dark:text-white rounded-lg border border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 @error('subject') border-red-500 focus:ring-red-500 @enderror"
                                     />

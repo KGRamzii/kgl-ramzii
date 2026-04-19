@@ -39,6 +39,11 @@ new class extends Component {
     <nav class="fixed top-0 left-0 right-0 z-50 shadow-md bg-white/80 dark:bg-zinc-800/80 backdrop-blur-sm">
         <div class="container flex items-center justify-between px-6 py-4 mx-auto">
 
+            <!-- Brand -->
+            <button wire:click="setTab('home')" class="flex-shrink-0 text-lg font-bold tracking-tight text-zinc-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                Kagiso R.
+            </button>
+
             <!-- Desktop Tabs -->
             <div class="hidden space-x-6 md:flex">
                 @foreach ($tabs as $tab)
@@ -56,18 +61,41 @@ new class extends Component {
                 @endforeach
             </div>
 
-            <!-- Mobile Menu: Hamburger + Active Tab Title -->
-            <div class="flex items-center space-x-4 md:hidden">
-                <span class="text-lg font-semibold">{{ ucfirst($activeTab) }}</span>
-
-                <button wire:click="toggleMobileMenu"
-                    class="p-2 transition rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-700">
-                    @if ($isMobileMenuOpen)
-                        <flux:icon.x-mark class="w-7 h-7 text-zinc-700 dark:text-zinc-200" />
-                    @else
-                        <flux:icon.bars-3 class="w-7 h-7 text-zinc-700 dark:text-zinc-200" />
-                    @endif
+            <!-- Right side: Dark mode toggle + Mobile hamburger -->
+            <div class="flex items-center space-x-2">
+                <!-- Dark mode toggle -->
+                <button
+                    x-data="{ isDark: document.documentElement.classList.contains('dark') }"
+                    @click="
+                        isDark = !isDark;
+                        window.Flux
+                            ? window.Flux.applyAppearance(isDark ? 'dark' : 'light')
+                            : (document.documentElement.classList.toggle('dark', isDark),
+                               localStorage.setItem('flux.appearance', isDark ? 'dark' : 'light'));
+                    "
+                    class="p-2 transition rounded-lg text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                    aria-label="Toggle dark mode"
+                >
+                    <svg x-show="!isDark" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                    <svg x-show="isDark" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
                 </button>
+
+                <!-- Mobile Menu: Hamburger + Active Tab Title -->
+                <div class="flex items-center space-x-2 md:hidden">
+                    <span class="text-sm font-semibold text-zinc-700 dark:text-zinc-200">{{ ucfirst($activeTab) }}</span>
+                    <button wire:click="toggleMobileMenu"
+                        class="p-2 transition rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-700">
+                        @if ($isMobileMenuOpen)
+                            <flux:icon.x-mark class="w-7 h-7 text-zinc-700 dark:text-zinc-200" />
+                        @else
+                            <flux:icon.bars-3 class="w-7 h-7 text-zinc-700 dark:text-zinc-200" />
+                        @endif
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -129,7 +157,7 @@ new class extends Component {
                    class="p-2 transition rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-700">
                     <x-bi-linkedin class="w-6 h-6 text-zinc-600 dark:text-zinc-300" />
                 </a>
-                <a href="mailto:your@email.com"
+                <a href="mailto:kagiso1382@gmail.com"
                    class="p-2 transition rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-700">
                     <flux:icon.envelope class="w-6 h-6 text-zinc-600 dark:text-zinc-300" />
                 </a>

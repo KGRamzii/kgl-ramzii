@@ -191,7 +191,7 @@ new class extends Component {
                     <div class="relative h-64 overflow-hidden rounded-t-3xl">
                         @if (!empty($project['preview']))
                             <img
-                                src="{{ Storage::url($project['preview']) }}"
+                                src="{{ asset($project['preview']) }}"
                                 alt="{{ $project['name'] }} Preview"
                                 loading="lazy"
                                 class="absolute inset-0 object-cover w-full h-full transition-all duration-700 ease-in-out transform scale-100 opacity-90 group-hover:opacity-100 group-hover:scale-110 brightness-95 group-hover:brightness-105"
