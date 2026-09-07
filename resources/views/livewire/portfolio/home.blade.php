@@ -3,7 +3,7 @@ use function Livewire\Volt\{state, computed};
 
 state([
     'name' => 'Kagiso Ramogayana',
-    'role' => 'Full Stack Developer',
+    'role' => 'Automation Engineer @ Scans.ai',
     'highlights' => [
         'Expertise in building scalable web applications',
         'Cloud-native development with Azure',
@@ -40,7 +40,7 @@ $cvExists = computed(function () {
             <!-- Profile Photo -->
             <div class="flex-shrink-0">
                 <div class="w-44 h-44 md:w-56 md:h-56 overflow-hidden rounded-full ring-4 ring-blue-500/40 dark:ring-blue-400/40 shadow-xl">
-                    <img src="{{ asset('Picture/Kagiso.png') }}" alt="Kagiso Ramogayana"
+                    <img src="{{ asset('Picture/Kagiso.jpg') }}" alt="Kagiso Ramogayana"
                          class="object-cover object-top w-full h-full"
                          width="224" height="224">
                 </div>

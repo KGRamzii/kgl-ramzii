@@ -2,7 +2,7 @@
 use function Livewire\Volt\{state};
 
 state([
-    'bio' => 'I am a dedicated Full Stack Developer with a passion for creating innovative and efficient web solutions. I specialize in turning complex problems into elegant, user-friendly applications using modern web technologies.',
+    'bio' => 'I am an Automation Engineer at Scans.ai, building AI-powered automation solutions with Python, React, Node.js, and ElectroNeek RPA. With a background as a Full Stack Developer, I specialize in turning complex problems into elegant, user-friendly applications and streamlined automation workflows.',
     'personalDetails' => [
         'Name' => 'Kagiso Ramogayana',
         'Email' => 'kagiso1382@gmail.com',
@@ -91,7 +91,7 @@ state([
 
                 <!-- Profile Image -->
                 <div class="overflow-hidden rounded-full shadow-xl w-36 h-36 sm:w-52 sm:h-52 bg-gradient-to-br from-indigo-400 to-blue-500 animate-slide-up">
-                    <img src="{{ asset('Picture/Kagiso.png') }}" alt="Kagiso Ramogayana"
+                    <img src="{{ asset('Picture/Kagiso.jpg') }}" alt="Kagiso Ramogayana"
                          class="object-cover object-top w-full h-full transition duration-300 transform rounded-full hover:scale-105" />
                 </div>
 
