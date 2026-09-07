@@ -4,12 +4,15 @@ use function Livewire\Volt\{state, computed, mount};
 state([
     'webDevSkills' => [
         ['name' => 'Laravel', 'level' => 70, 'icon' => 'https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/laravel/laravel-plain.svg', 'category' => 'Backend'],
-        ['name' => 'Vue.js', 'level' => 40, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg', 'category' => 'Frontend'],
+        ['name' => 'React', 'level' => 60, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', 'category' => 'Frontend'],
+        ['name' => 'Node.js', 'level' => 55, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', 'category' => 'Backend'],
+        ['name' => 'Python', 'level' => 60, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', 'category' => 'Backend'],
         ['name' => 'PHP', 'level' => 70, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg', 'category' => 'Backend'],
         ['name' => 'JavaScript', 'level' => 40, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', 'category' => 'Frontend'],
         ['name' => 'Tailwind CSS', 'level' => 60, 'icon' => 'https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg', 'category' => 'Frontend'],
     ],
     'cloudSkills' => [
+        ['name' => 'ElectroNeek RPA', 'level' => 55, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/robotframework/robotframework-original.svg', 'category' => 'Automation'],
         ['name' => 'Microsoft Azure', 'level' => 60, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg', 'category' => 'Cloud Platform'],
         ['name' => 'Cloud Architecture', 'level' => 75, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg', 'category' => 'Architecture'],
         ['name' => 'Serverless Computing', 'level' => 40, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg', 'category' => 'Architecture'],
