@@ -8,7 +8,7 @@ state([
         ['name' => 'Node.js', 'level' => 55, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', 'category' => 'Backend'],
         ['name' => 'Python', 'level' => 60, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', 'category' => 'Backend'],
         ['name' => 'PHP', 'level' => 70, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg', 'category' => 'Backend'],
-        ['name' => 'JavaScript', 'level' => 40, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', 'category' => 'Frontend'],
+        ['name' => 'JavaScript', 'level' => 60, 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', 'category' => 'Frontend'],
         ['name' => 'Tailwind CSS', 'level' => 60, 'icon' => 'https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg', 'category' => 'Frontend'],
     ],
     'cloudSkills' => [
