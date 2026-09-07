@@ -205,6 +205,23 @@ select:focus[data-flux-control] {
 }
 
 /* --------------------- Custom Utilities --------------------- */
+
+/* Fix daisyUI 5.1.23 + MaryUI 2.4.6: .modal's `visibility`/`opacity` use a
+   @starting-style-driven transition (for the open/close fade). MaryUI
+   toggles the `open` attribute/`modal-open` class reactively via Alpine
+   instead of calling the native dialog.showModal()/close(), which causes
+   the transition to perpetually restart from its @starting-style values
+   (visibility:hidden/opacity:0) instead of settling at the "open" target
+   — the modal gets stuck invisible even against inline `!important`,
+   since a live-animating property's interpolated value outranks every
+   cascade origin. Disabling the transition stops the restart loop and
+   lets the plain (correct) target values apply immediately. Verified
+   directly against the live site: the modal's content renders correctly
+   once this is in place. */
+.modal {
+    transition: none;
+}
+
 .animate-fade-in {
     animation: fade-in 0.8s ease-out;
 }

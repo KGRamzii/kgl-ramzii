@@ -44,7 +44,7 @@
         <div class="flex justify-center md:justify-end animate-slide-in-right">
             <div class="relative">
                 <div class="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl opacity-20 dark:opacity-30 blur-2xl animate-pulse-glow"></div>
-                <img src="{{ asset('Picture/Kagiso.png') }}" 
+                <img src="{{ asset('Picture/Kagiso.jpg') }}" 
                      alt="Photo of {{ $name }}" 
                      class="relative w-72 h-72 object-cover rounded-2xl shadow-glow border-4 border-white dark:border-gray-800">
             </div>

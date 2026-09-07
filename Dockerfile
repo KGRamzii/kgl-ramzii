@@ -47,6 +47,10 @@ RUN apt-get update \
 # 2. Copy config files to proper locations
 COPY .fly/nginx/ /etc/nginx/
 COPY .fly/fpm/ /etc/php/${PHP_VERSION}/fpm/
+# Tuned production OPcache settings. Without this COPY the ini in
+# .fly/php/conf.d/ never reaches the image, so PHP falls back to stock
+# defaults (validate_timestamps=1, smaller file cache) on every request.
+COPY .fly/php/conf.d/ /etc/php/${PHP_VERSION}/fpm/conf.d/
 COPY .fly/supervisor/ /etc/supervisor/
 COPY .fly/entrypoint.sh /entrypoint
 COPY .fly/start-nginx.sh /usr/local/bin/start-nginx

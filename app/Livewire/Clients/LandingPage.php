@@ -34,9 +34,9 @@ class LandingPage extends Component
             'status' => 'Completed',
             'link' => 'https://pleasedontshoot.fly.dev',
             'repository' => 'https://github.com/KGRamzii/pleasedontshoot',
-            'preview' => '/images/pds/pds1.png',
+            'preview' => '/storage/images/pds/pds1.jpg',
             'category' => 'Web Development',
-            'screenshots' => ['/storage/images/pds/pds1.png','/storage/images/pds/pds2.png','/storage/images/pds/pdsMobile.png'],
+            'screenshots' => ['/storage/images/pds/pds1.jpg','/storage/images/pds/pds2.jpg','/storage/images/pds/pdsMobile.jpg'],
         ],
         [
             'name' => 'AmoShots',
@@ -48,9 +48,9 @@ class LandingPage extends Component
             'status' => 'Completed',
             'link' => 'https://amoshots.com',
             'repository' => null,
-            'preview' => '/images/amoshots/web.png',
+            'preview' => '/storage/images/amoshots/web.jpg',
             'category' => 'Web Development',
-            'screenshots' => ['/storage/images/amoshots/web.png', '/storage/images/amoshots/mobile.png'],
+            'screenshots' => ['/storage/images/amoshots/web.jpg', '/storage/images/amoshots/mobile.jpg'],
         ]
     ];
 

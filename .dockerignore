@@ -27,6 +27,14 @@ vendor
 **/Thumbs.db
 public/hot
 
+# public/build is generated fresh by `npm run build` in every deploy (see
+# Dockerfile's node_modules_go_brrr stage). Excluding it here prevents a
+# stale/pre-existing public/build (e.g. from a local checkout) from ever
+# landing in the base image, which was causing the final rsync step to
+# leave stale manifest.json/assets in place instead of the freshly built
+# ones on deploy.
+public/build
+
 #for testing purposes
 
 public/storage

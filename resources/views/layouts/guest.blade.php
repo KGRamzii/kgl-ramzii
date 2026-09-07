@@ -12,7 +12,7 @@
         <meta property="og:type" content="website">
         <meta property="og:title" content="{{ $title ?? 'Kagiso Ramogayana — Full Stack Developer' }}">
         <meta property="og:description" content="{{ $description ?? 'Full Stack Developer specialising in Laravel, Livewire, and cloud-native solutions.' }}">
-        <meta property="og:image" content="{{ asset('Picture/Kagiso.png') }}">
+        <meta property="og:image" content="{{ asset('Picture/Kagiso.jpg') }}">
 
         <link rel="icon" href="{{ asset('Picture/newLogo.svg') }}" type="image/svg">
 
